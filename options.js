@@ -49,9 +49,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (provider === "gemini") {
       geminiInstructions.style.display = "block"
       openaiInstructions.style.display = "none"
-    } else {
+    } else if (provider === "openai") {
       geminiInstructions.style.display = "none"
       openaiInstructions.style.display = "block"
+    } else if (provider === "ours") {
+      geminiInstructions.style.display = "none"
+      openaiInstructions.style.display = "none"
+
+      chrome.storage.sync.get(["defaultApiKey"], (result) => {
+        apiKeyInput.value = result.defaultApiKey
+      })
+
     }
   }
 

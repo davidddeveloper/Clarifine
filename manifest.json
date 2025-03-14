@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Smart Definition Helper",
+  "name": "Clarifine",
   "version": "1.0",
   "description": "Get contextual definitions for selected text using AI",
   "permissions": ["storage", "activeTab", "contextMenus"],
@@ -32,8 +32,8 @@
   "commands": {
     "lookup-selection": {
       "suggested_key": {
-        "default": "Alt+D",
-        "mac": "Alt+D"
+        "default": "Alt+C",
+        "mac": "Alt+C"
       },
       "description": "Look up definition for selected text"
     }

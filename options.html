@@ -152,6 +152,7 @@
     <select id="apiProvider">
       <option value="gemini">Google Gemini (Recommended)</option>
       <option value="openai">OpenAI</option>
+      <option value="ours">Use Ours (not recommended not secure) (You will run into API limit issues)</option>
     </select>
     <div class="help-text">Choose your preferred AI provider for definitions.</div>
   </div>
@@ -177,6 +178,7 @@
           <li>Sign in with your Google account</li>
           <li>Create a new API key</li>
           <li>Copy and paste it here</li>
+          <li>Then go to <a href="https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com">this link</a> and enable the Gemini Api for you account</li>
         </ol>
       </div>
       <div id="openaiInstructions" style="display: none;">
@@ -185,6 +187,7 @@
           <li>Sign in to your OpenAI account</li>
           <li>Create a new secret key</li>
           <li>Copy and paste it here</li>
+          <li>Watch this <a href="https://www.youtube.com/watch?v=OB99E7Y1cMA">Video</a> to learn more</li>
         </ol>
       </div>
     </div>

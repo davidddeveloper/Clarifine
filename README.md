@@ -59,7 +59,7 @@ A Chrome extension that provides instant, contextual definitions for any text yo
 3. Click the × button to close the tooltip
 
 ### Keyboard Shortcut
-- Press `Alt+D` to look up the definition for currently selected text
+- Press `Alt+C` to look up the definition for currently selected text
 
 ### Context Menu
 1. Select text on a webpage

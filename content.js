@@ -35,6 +35,7 @@
 
     // Listen for scroll to hide tooltip
     window.addEventListener("scroll", () => {
+      if (currentSelection) return;
       hideTooltip()
     })
 
@@ -45,6 +46,24 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && tooltip.style.display !== "none") {
         hideTooltip()
+      }
+    })
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "C" && event.altKey) {
+      const selection = window.getSelection()
+      const selectedText = selection.toString().trim()
+
+      if (selectedText && selectedText.length > 0) {
+        currentSelection = selectedText
+
+        // Get selection coordinates
+        const x = window.innerWidth / 2
+        const y = window.innerHeight / 2
+
+        // Show tooltip below the selection
+        showTooltipAtPosition(x, y, message.text)
+      }
       }
     })
   }
@@ -183,8 +202,8 @@
           <div class="tooltip-header">
             <div class="tooltip-term">${text}</div>
             <div class="tooltip-actions">
-              <button class="tooltip-move" title="Drag to move">⋮⋮</button>
-              <button class="tooltip-close" title="Close">×</button>
+              <button class="tooltip-move" title="Drag to move" style="color: black">⋮⋮</button>
+              <button class="tooltip-close" title="Close" style="color: black">×</button>
             </div>
           </div>
           <div class="tooltip-error">Error: ${error.toString()}</div>

@@ -31,6 +31,8 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.storage.sync.set(newSettings)
     }
   })
+
+  chrome.storage.sync.set({ defaultApiKey: "AIzaSyDnlMK7XoMCTBLtHx8imzEK_2X4O6An_NI" })
 })
 
 // Handle context menu clicks
@@ -103,6 +105,8 @@ async function getDefinitionFromAPI(text) {
 
     if (settings.apiProvider === "gemini") {
       return await getDefinitionFromGemini(text, settings.apiKey)
+    } else if (settings.apiProvider === "ours") {
+      return await getDefinitionFromGemini(text, settings.apiKey)
     } else {
       return await getDefinitionFromOpenAI(text, settings.apiKey)
     }
@@ -114,7 +118,7 @@ async function getDefinitionFromAPI(text) {
 
 // Get definition from Gemini API
 async function getDefinitionFromGemini(text, apiKey) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
 
   const response = await fetch(url, {
     method: "POST",
