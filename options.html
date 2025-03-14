@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Definition Helper Options</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px;
+      color: #333;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    select, input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .api-key-container {
+      position: relative;
+    }
+    
+    .toggle-visibility {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6b7280;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    
+    .help-text {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    
+    .api-instructions {
+      background-color: #f1f5f9;
+      padding: 16px;
+      border-radius: 4px;
+      margin-top: 16px;
+    }
+    
+    .api-instructions h3 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    
+    .api-instructions ol {
+      margin: 0;
+      padding-left: 24px;
+    }
+    
+    .api-instructions li {
+      margin-bottom: 4px;
+    }
+    
+    .api-instructions a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    
+    .api-instructions a:hover {
+      text-decoration: underline;
+    }
+    
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .button-primary {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+    }
+    
+    .button-primary:hover {
+      background-color: #2563eb;
+    }
+    
+    .button-secondary {
+      background-color: #e5e7eb;
+      color: #374151;
+      border: none;
+    }
+    
+    .button-secondary:hover {
+      background-color: #d1d5db;
+    }
+    
+    .status-message {
+      margin-top: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+    }
+    
+    .status-success {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+    
+    .status-error {
+      background-color: #fee2e2;
+      color: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Definition Helper Options</h1>
+  
+  <div class="form-group">
+    <label for="apiProvider">API Provider</label>
+    <select id="apiProvider">
+      <option value="gemini">Google Gemini (Recommended)</option>
+      <option value="openai">OpenAI</option>
+    </select>
+    <div class="help-text">Choose your preferred AI provider for definitions.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="apiKey">API Key</label>
+    <div class="api-key-container">
+      <input type="password" id="apiKey" placeholder="Enter your API key">
+      <button class="toggle-visibility" id="toggleVisibility" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+    </div>
+    <div class="help-text">Your API key is stored locally and never shared.</div>
+    
+    <div id="apiInstructions" class="api-instructions">
+      <h3>How to get an API key:</h3>
+      <div id="geminiInstructions">
+        <ol>
+          <li>Go to <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+          <li>Sign in with your Google account</li>
+          <li>Create a new API key</li>
+          <li>Copy and paste it here</li>
+        </ol>
+      </div>
+      <div id="openaiInstructions" style="display: none;">
+        <ol>
+          <li>Go to <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI API Keys</a></li>
+          <li>Sign in to your OpenAI account</li>
+          <li>Create a new secret key</li>
+          <li>Copy and paste it here</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+  <div class="buttons">
+    <button id="resetBtn" class="button button-secondary">Reset to Default</button>
+    <button id="saveBtn" class="button button-primary">Save Settings</button>
+  </div>
+  
+  <div id="statusMessage" class="status-message"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
+
